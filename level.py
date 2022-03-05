@@ -111,9 +111,12 @@ class LevelController:
             elif isinstance(next_obj, Level.Wall) or isinstance(next_obj, Level.Ball):
                 break
             elif isinstance(next_obj, Level.ExitWall):
-                self.level.grid[curr_r][curr_c] = 0
-                self.balls.remove(ball)
-                break
+                if next_obj.color == ball.color:
+                    self.level.grid[curr_r][curr_c] = 0
+                    self.balls.remove(ball)
+                    break
+                else:
+                    break
 
 
 if __name__ == '__main__':
